@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:39:09 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/27 14:05:59 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/03 10:44:47 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_list
 
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstadd_front(t_list **alst, t_list *new);
+int		ft_lstadd_void(t_list **list, void *new, int back);
+int		ft_lstadd_dbl(t_list **list, void **new, size_t size, int back);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
@@ -91,6 +93,8 @@ char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+size_t	ft_word_len(char **str);
+char	**ft_word_join(char **s1, char *s2);
 
 /*	==================
 	===   ft_put   ===
