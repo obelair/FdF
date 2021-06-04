@@ -6,7 +6,7 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/06/03 13:50:12 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/06/04 13:37:50 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,11 @@ PATH_HEADERS=	incs
 PATH_SRCS	=	srcs
 PATH_OBJS	=	objs
 
-ifeq ($(LINUX),0)
-PATH_MLX	= $(MINILIBX_OS_X)
+ifeq (${LINUX},0)
+PATH_MLX	= ${MINILIBX_OS_X}
 MLX			= libmlx.dylib
 else
-PATH_MLX	= $(MINILIBX_LINUX)
+PATH_MLX	= ${MINILIBX_LINUX}
 MLX			= libmlx.a
 endif
 

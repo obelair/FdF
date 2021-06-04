@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/31 17:32:06 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/04 14:36:23 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_data
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_lenght;
+	int		line_length;
 	int		endian;
 }	t_data;
 
@@ -56,11 +56,25 @@ typedef struct s_vector
 	float	z;
 }	t_vector;
 
+typedef struct s_data_point
+{
+	t_vector	**point;
+	size_t		nbr_lines;
+	size_t		*nbr_columns;
+}	t_data_point;
+
 typedef struct s_all_file
 {
 	t_list			*list;
 	t_data			data;
+	t_data_point	data_pt;
 	t_resolution	res;
 }	t_all_file;
+
+void	write_error(int err, char *str);
+void	fdf_exit(t_list **list, int err, char *str);
+void	fdf_arg(t_list **list, int ac, char **av);
+
+int		open_fdf(t_all_file *taf, char *file);
 
 #endif

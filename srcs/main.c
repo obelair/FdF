@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:57:06 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/31 16:09:41 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/04 12:32:45 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ int	main(int ac, char **av)
 	- afficher les segments
 	- faire en sorte que la croix et la touche ESC quitte le programme
 	*/
-	fdf_arg();
-	init_win();
+	fdf_arg(taf.list, ac, av);
+	open_fdf(&taf, av[1]);
+	init_win(&taf);
 	mlx_hook(taf.data.win, 17, 0L, close_win, &taf);
 	mlx_hook(taf.data.win, 2, 1L << 0, key_press, &taf);
 	mlx_loop_hook(taf.data.mlx, next_frame, &taf);
