@@ -6,7 +6,7 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 13:31:58 by obelair           #+#    #+#              #
-#    Updated: 2021/06/04 08:42:31 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/06/06 22:24:40 by obelair          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,12 @@ RM			=	rm -rf
 # === Sources === #
 
 SRCS_CMP	=	${addprefix ft_cmp/, ft_isdigit.c ft_isprint.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_min.c ft_max.c ft_strisdigit.c}
-SRCS_INT	=	${addprefix ft_int/, ft_itoa.c ft_atoi.c ft_intlen.c}
+SRCS_INT	=	${addprefix ft_int/, ft_itoa.c ft_atoi.c ft_intlen.c ft_intjoin.c}
 SRCS_LST	=	${addprefix ft_lst/, ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_void.c ft_lstadd_dbl.c}
 SRCS_MEM	=	${addprefix ft_mem/, ft_bzero.c ft_calloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c}
 SRCS_PUT	=	${addprefix ft_put/, ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c}
 SRCS_STR	=	${addprefix ft_str/, ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c ft_strjoin.c ft_strtrim.c ft_substr.c ft_strmapi.c ft_split.c ft_strcmp.c ft_strichr.c ft_word_len.c ft_word_join.c}
+SRCS_VEC	=	${addprefix ft_vector/, ft_add_vector.c ft_minus_vector.c ft_div_vector.c ft_mult_vector.c ft_rotation.c ft_scalar.c}
 SRCS_PTF	=	${addprefix ft_printf/, ft_printf.c ft_scan_str.c ft_displ_addr.c ft_displ_chr.c ft_displ_int.c ft_displ_str.c ft_displ_util.c ft_init_struct.c ft_lencmp.c ft_nptr.c}
 SRCS_GNL	=	${addprefix gnl/, get_next_line.c}
 SRCS		=	${addprefix ${PATH_SRC}/, ${SRCS_CMP} ${SRCS_INT} ${SRCS_LST} ${SRCS_MEM} ${SRCS_PUT} ${SRCS_STR} ${SRCS_PTF} ${SRCS_GNL}}
@@ -45,7 +46,7 @@ OBJS		=	${addprefix ${PATH_OBJ}/, ${notdir ${SRCS:.c=.o}}}
 
 # === Include === #
 
-HEADER		=	${addprefix ${PATH_HEADER}/, libft.h}
+HEADER		=	${addprefix ${PATH_HEADER}/, libft.h ft_vector.h}
 
 # === Colors === #
 

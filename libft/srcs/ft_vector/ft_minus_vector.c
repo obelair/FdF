@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_minus_vector.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 23:36:00 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/06 14:01:55 by obelair          ###   ########.fr       */
+/*   Created: 2021/06/06 18:09:09 by obelair           #+#    #+#             */
+/*   Updated: 2021/06/06 18:09:57 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_vector.h"
 
-char	*ft_strdup(const char *s1)
+t_vector	ft_minus_vector(t_vector u, t_vector v)
 {
-	char	*cpy;
+	t_vector	result;
 
-	cpy = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
-	if (!cpy)
-		return (NULL);
-	ft_strlcpy(cpy, s1, ft_strlen(s1) + 1);
-	return (cpy);
+	result.x = u.x - v.x;
+	result.y = u.y - v.y;
+	result.z = u.z - v.z;
+	return (result);
 }

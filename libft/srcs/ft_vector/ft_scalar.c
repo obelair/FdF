@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_scalar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 23:36:00 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/06 14:01:55 by obelair          ###   ########.fr       */
+/*   Created: 2021/06/06 19:51:33 by obelair           #+#    #+#             */
+/*   Updated: 2021/06/06 22:15:07 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_vector.h"
 
-char	*ft_strdup(const char *s1)
+float	ft_scalar(t_vector u, t_vector v)
 {
-	char	*cpy;
+	float	scal;
 
-	cpy = ft_calloc(ft_strlen(s1) + 1, sizeof(char));
-	if (!cpy)
-		return (NULL);
-	ft_strlcpy(cpy, s1, ft_strlen(s1) + 1);
-	return (cpy);
+	scal = u.x * v.x + u.y * v.y + u.z * v.z;
+	return (scal);
 }

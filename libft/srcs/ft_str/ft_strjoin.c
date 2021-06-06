@@ -6,11 +6,10 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 13:06:43 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/14 09:55:40 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 14:01:23 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft.h"
 
 char	*ft_strjoin(char *s1, const char *s2)
@@ -38,6 +37,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 		cat[i + j] = s2[j];
 		j++;
 	}
+	cat[i + j] = 0;
 	free(s1);
 	return (cat);
 }

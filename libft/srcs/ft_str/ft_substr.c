@@ -6,11 +6,10 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:55:46 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/14 09:55:40 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 14:02:07 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)

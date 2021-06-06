@@ -6,12 +6,11 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 08:57:31 by obelair           #+#    #+#             */
-/*   Updated: 2021/05/14 09:55:40 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 14:01:38 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_nbword(const char *s, char c)
 {

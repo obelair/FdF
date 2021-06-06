@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:39:09 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/04 08:42:21 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/06 17:15:35 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 int		ft_intblen(long long n, long long base);
 int		ft_uintblen(unsigned long long n, unsigned long long base);
+int		*ft_intjoin(int *n1, const int *n2, size_t len_n1, size_t len_n2);
 
 /*	==================
 	===   ft_cmp   ===
