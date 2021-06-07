@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 12:50:50 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/03 13:43:09 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 17:28:24 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	write_error(int err, char *str)
 		printf("Error >>\n\tExtension '%s' not recognized.\n", str);
 	else if (err == 4)
 		printf("Error >>\n\tFile '%s' doesn't exist.\n", str);
+	else if (err == 5)
+		printf("Error >>\n\tBad writing into this line : %s\n", str);
 	else
 		printf("Error >>\n\t%s\n", str);
 }
@@ -46,9 +48,9 @@ void	fdf_arg(t_list **list, int ac, char **av)
 	if (ft_strchr(av[ac - 1], '.'))
 	{
 		tmp = ft_split(av[ac - 1], '.');
-		lstadd_dbl(list, tmp);
-		if (ft_strcmp(tmp[ft_nbr_word(tmp) - 1], "fdf"))
-			fdf_exit(list, 3, tmp[ft_nbr_word(tmp) - 1]);
+		ft_lstadd_dbl(list, (void **)tmp, ft_word_len(tmp), 0);
+		if (ft_strcmp(tmp[ft_word_len(tmp) - 1], "fdf"))
+			fdf_exit(list, 3, tmp[ft_word_len(tmp) - 1]);
 		else if (!tmp[1] || ft_strnstr(av[1], "/.fdf", ft_strlen(av[1])))
 			fdf_exit(list, 4, av[1]);
 	}

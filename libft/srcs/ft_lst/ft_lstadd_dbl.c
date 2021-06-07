@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:37:08 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/03 10:10:59 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 17:20:53 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_lstadd_dbl(t_list **list, void **new, size_t size, int back)
 		return (-1);
 	if (ft_lstadd_void(list, new, back))
 		return (-1);
-	while (i < size)
+	while (i < (int)size)
 	{
 		if (ft_lstadd_void(list, new[i], back))
 			return (-1);

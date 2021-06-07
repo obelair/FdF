@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 10:43:11 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/03 10:43:33 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 17:23:40 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_word_join(char **s1, char *s2)
 
 	if (!s1 && !s2)
 		return (0);
-	i = (int)ft_nbr_word(s1);
+	i = (int)ft_word_len(s1);
 	cat = ft_calloc(i + 2, sizeof(char *));
 	if (!cat)
 		return (0);

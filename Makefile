@@ -6,14 +6,14 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/06/06 12:33:20 by obelair          ###   ########.fr        #
+#    Updated: 2021/06/07 17:29:01 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # === Name === #
 
 NAME		=	fdf
-LINUX		=	1
+LINUX		=	0
 
 # === Directories === #
 
@@ -48,7 +48,7 @@ RM			=	rm -rf
 
 # === Sources === #
 
-SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c}
+SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c read.c}
 
 # === Objects === #
 

@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/04 14:36:23 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/07 17:31:11 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <math.h>
 # include "libft.h"
+# include "ft_vector.h"
 # include "mlx.h"
 
 # ifdef __APPLE__
@@ -49,13 +50,6 @@ typedef struct s_resolution
 	int	height;
 }	t_resolution;
 
-typedef struct s_vector
-{
-	float	x;
-	float	y;
-	float	z;
-}	t_vector;
-
 typedef struct s_data_point
 {
 	t_vector	**point;
@@ -66,6 +60,7 @@ typedef struct s_data_point
 typedef struct s_all_file
 {
 	t_list			*list;
+	char			**map;
 	t_data			data;
 	t_data_point	data_pt;
 	t_resolution	res;
@@ -75,6 +70,8 @@ void	write_error(int err, char *str);
 void	fdf_exit(t_list **list, int err, char *str);
 void	fdf_arg(t_list **list, int ac, char **av);
 
-int		open_fdf(t_all_file *taf, char *file);
+void	init_struct(t_all_file *taf);
+
+void	open_fdf(t_all_file *taf, char *file);
 
 #endif
