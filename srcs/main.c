@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:57:06 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/07 17:25:45 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 22:34:08 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 int	main(int ac, char **av)
 {
 	t_all_file	taf;
+	int			i;
+	int			j;
 	/*
 	- Verifier les arguments
 	- Recuperer les donnees d'un fichier .fdf
@@ -39,10 +41,31 @@ int	main(int ac, char **av)
 	*/
 	fdf_arg(&taf.list, ac, av);
 	open_fdf(&taf, av[1]);
+	printf("    |");
+	j = 0;
+	while (j < taf.data_pt.nbr_columns[0] - 1)
+	{
+		if (j < 10)
+			printf(" [%d]  |", j);
+		else
+			printf(" [%d] |", j);
+		j++;
+	}
+	printf(" [%d]\n", j);
+	i = 0;
+	while (i < taf.data_pt.nbr_lines)
+	{
+		j = 0;
+		while (j < taf.data_pt.nbr_columns[i] - 1)
+		{
+			printf("");
+		}
+	}
 	// init_win(&taf);
 	// mlx_hook(taf.data.win, 17, 0L, close_win, &taf);
 	// mlx_hook(taf.data.win, 2, 1L << 0, key_press, &taf);
 	// mlx_loop_hook(taf.data.mlx, next_frame, &taf);
 	// mlx_loop(taf.data.mlx);
+	ft_lstclear(&taf.list, &free);
 	return (EXIT_SUCCESS);
 }
