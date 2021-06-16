@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/07 17:31:11 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/16 17:32:11 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_resolution
 typedef struct s_data_point
 {
 	t_vector	**point;
+	int			**color;
 	size_t		nbr_lines;
 	size_t		*nbr_columns;
 }	t_data_point;

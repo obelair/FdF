@@ -6,7 +6,7 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/06/07 17:29:01 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/06/10 10:32:17 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ RM			=	rm -rf
 
 # === Sources === #
 
-SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c read.c}
+SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c read.c rgb.c data.c}
 
 # === Objects === #
 

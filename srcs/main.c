@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:57:06 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/08 22:34:08 by obelair          ###   ########.fr       */
+/*   Updated: 2021/06/09 08:56:43 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	main(int ac, char **av)
 	*/
 	fdf_arg(&taf.list, ac, av);
 	open_fdf(&taf, av[1]);
+	printf("============================\n");
+	printf("=====      SOMMETS     =====\n");
+	printf("============================\n");
 	printf("    |");
 	j = 0;
 	while (j < taf.data_pt.nbr_columns[0] - 1)
@@ -55,6 +58,10 @@ int	main(int ac, char **av)
 	i = 0;
 	while (i < taf.data_pt.nbr_lines)
 	{
+		if (i < 10)
+			printf(" [%d]  |", i);
+		else
+			printf(" [%d] |", i);
 		j = 0;
 		while (j < taf.data_pt.nbr_columns[i] - 1)
 		{

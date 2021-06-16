@@ -6,62 +6,74 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:13:54 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/08 17:56:00 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/16 17:41:28 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	read_line(t_all_file *taf, char *str, size_t len)
+void	read_point(t_all_file *taf, char *str)
 {
-	int	line;
-	int	col;
-	int	i;
+	size_t	len;
+	int		x;
+	int		y;
 
-	line = taf->data_pt.nbr_lines;
-	col = 0;
-	i = 0;
-	while (str[i])
+	len = ft_strlen(str);
+	if ((!ft_strchr(str, ',') && (ft_strisdigit(str)
+				|| str != ft_strrchr(str, '-')))
+		|| (ft_strchr(str, ',') && (!ft_strnstr(str, ",0x", len)
+				&& !ft_strnstr(str, ",0X", len))))
+		fdf_exit(&taf->list, 5, str);
+	x = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
+	y = taf->data_pt.nbr_lines;
+	taf->data_pt.point[y][x].x = x;
+	taf->data_pt.point[y][x].y = y;
+	taf->data_pt.point[y][x].z = ft_atoi(str);
+	read_color();
+}
+
+void	read_line(t_all_file *taf, char *str)
+{
+	size_t	len;
+	char	**tmp;
+
+	tmp = ft_split(str, ' ');
+	len = ft_word_len(tmp);
+	taf->data_pt.point[taf->data_pt.nbr_lines] = ft_calloc(len,
+			sizeof(t_vector));
+	taf->data_pt.color[taf->data_pt.nbr_lines] = ft_calloc(len,
+			sizeof(int));
+	if (!tmp || !taf->data_pt.point[taf->data_pt.nbr_lines]
+		|| !taf->data_pt.color[taf->data_pt.nbr_lines]
+		|| ft_lstadd_dbl(&taf->list, (void **)tmp, len, 0)
+		|| ft_lstadd_void(&taf->list,
+			taf->data_pt.point[taf->data_pt.nbr_lines], 0)
+		|| ft_lstadd_void(&taf->list,
+			taf->data_pt.color[taf->data_pt.nbr_lines], 0))
+		fdf_exit(&taf->list, -1, strerror(errno));
+	while (taf->data_pt.nbr_columns[taf->data_pt.nbr_lines] < len)
 	{
-		if (!ft_isdigit(str[i]))
-			fdf_exit(&taf->list, 5, str);
-		taf->data_pt.point[line][col].x = col;
-		taf->data_pt.point[line][col].y = line;
-		taf->data_pt.point[line][col].z = ft_atoi(str + i);
-		col++;
-		while (ft_isdigit(str[i]))
-			i++;
-		if (str[i] != ' ')
-			fdf_exit(&taf->list, 5, str);
-		i++;
+		read_point(taf, tmp[taf->data_pt.nbr_columns[taf->data_pt.nbr_lines]]);
+		taf->data_pt.nbr_columns[taf->data_pt.nbr_lines]++;
 	}
-	taf->data_pt.nbr_columns[line] = col;
 }
 
 void	read_map(t_all_file *taf)
 {
 	size_t	len;
-	char	**tmp;
 
 	len = ft_word_len(taf->map);
 	taf->data_pt.point = ft_calloc(len, sizeof(t_vector *));
-	taf->data_pt.nbr_columns = ft_calloc(len, sizeof(int));
+	taf->data_pt.nbr_columns = ft_calloc(len, sizeof(size_t));
+	taf->data_pt.color = ft_calloc(len, sizeof(int *));
 	if (!taf->data_pt.nbr_columns || !taf->data_pt.point
 		|| ft_lstadd_void(&taf->list, taf->data_pt.nbr_columns, 0)
-		|| ft_lstadd_void(&taf->list, taf->data_pt.point, 0))
+		|| ft_lstadd_void(&taf->list, taf->data_pt.point, 0)
+		|| ft_lstadd_void(&taf->list, taf->data_pt.color, 0))
 		fdf_exit(&taf->list, -1, strerror(errno));
 	while (taf->map[taf->data_pt.nbr_lines])
 	{
-		tmp = ft_split(taf->map[taf->data_pt.nbr_lines], ' ');
-		len = ft_word_len(tmp);
-		taf->data_pt.point[taf->data_pt.nbr_lines] = ft_calloc(len,
-				sizeof(t_vector));
-		if (!tmp || taf->data_pt.point[taf->data_pt.nbr_lines]
-			|| ft_lstadd_dbl(&taf->list, (void **)tmp, len, 0)
-			|| ft_lstadd_void(&taf->list,
-				taf->data_pt.point[taf->data_pt.nbr_lines], 0))
-			fdf_exit(&taf->list, -1, strerror(errno));
-		read_line(taf, taf->map[taf->data_pt.nbr_lines], len);
+		read_line(taf, taf->map[taf->data_pt.nbr_lines]);
 		taf->data_pt.nbr_lines++;
 	}
 }
