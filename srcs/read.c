@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:13:54 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/16 17:41:28 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/17 14:55:39 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	read_point(t_all_file *taf, char *str)
 {
-	size_t	len;
+	char	**tmp;
 	int		x;
 	int		y;
 
-	len = ft_strlen(str);
-	if ((!ft_strchr(str, ',') && (ft_strisdigit(str)
-				|| str != ft_strrchr(str, '-')))
-		|| (ft_strchr(str, ',') && (!ft_strnstr(str, ",0x", len)
-				&& !ft_strnstr(str, ",0X", len))))
+	tmp = ft_split(str, ',');
+	if (ft_lstadd_dbl(&taf->list, (void **), ft_word_len(tmp), 0))
+		fdf_exit(&taf->list, -1, str);
+	if (ft_strisdigit(tmp[0]) || str != ft_strrchr(str, '-')
+		|| (tmp[1] && ft_strishexa(tmp[1], 1)))
 		fdf_exit(&taf->list, 5, str);
 	x = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
 	y = taf->data_pt.nbr_lines;
 	taf->data_pt.point[y][x].x = x;
 	taf->data_pt.point[y][x].y = y;
 	taf->data_pt.point[y][x].z = ft_atoi(str);
-	read_color();
+	read_color(taf, tmp[1]);
 }
 
 void	read_line(t_all_file *taf, char *str)

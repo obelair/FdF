@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 10:39:09 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/06 17:15:35 by obelair          ###   ########.fr       */
+/*   Updated: 2021/06/17 13:29:28 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_strisdigit(char *str);
+int		ft_strishexa(char *str, int suffixe);
 int		ft_max(int n1, int n2);
 int		ft_min(int n1, int n2);
 

@@ -6,7 +6,7 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/24 13:31:58 by obelair           #+#    #+#              #
-#    Updated: 2021/06/06 22:24:40 by obelair          ###   ########.fr        #
+#    Updated: 2021/06/17 13:29:25 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RM			=	rm -rf
 
 # === Sources === #
 
-SRCS_CMP	=	${addprefix ft_cmp/, ft_isdigit.c ft_isprint.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_min.c ft_max.c ft_strisdigit.c}
+SRCS_CMP	=	${addprefix ft_cmp/, ft_isdigit.c ft_isprint.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_min.c ft_max.c ft_strisdigit.c ft_strishexa.c}
 SRCS_INT	=	${addprefix ft_int/, ft_itoa.c ft_atoi.c ft_intlen.c ft_intjoin.c}
 SRCS_LST	=	${addprefix ft_lst/, ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_void.c ft_lstadd_dbl.c}
 SRCS_MEM	=	${addprefix ft_mem/, ft_bzero.c ft_calloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c}
