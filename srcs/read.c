@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:13:54 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/17 14:55:39 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/23 12:49:04 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	read_point(t_all_file *taf, char *str)
 	int		y;
 
 	tmp = ft_split(str, ',');
-	if (ft_lstadd_dbl(&taf->list, (void **), ft_word_len(tmp), 0))
+	if (ft_lstadd_dbl(&taf->list, (void **)tmp, ft_word_len(tmp), 0))
 		fdf_exit(&taf->list, -1, str);
-	if (ft_strisdigit(tmp[0]) || str != ft_strrchr(str, '-')
+	if (ft_strisdigit(tmp[0]) || (str[0] == '-' && str != ft_strrchr(str, '-'))
 		|| (tmp[1] && ft_strishexa(tmp[1], 1)))
 		fdf_exit(&taf->list, 5, str);
 	x = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
@@ -45,7 +45,7 @@ void	read_line(t_all_file *taf, char *str)
 			sizeof(int));
 	if (!tmp || !taf->data_pt.point[taf->data_pt.nbr_lines]
 		|| !taf->data_pt.color[taf->data_pt.nbr_lines]
-		|| ft_lstadd_dbl(&taf->list, (void **)tmp, len, 0)
+		|| ft_lstadd_dbl(&taf->list, (void **)tmp, ft_word_len(tmp), 0)
 		|| ft_lstadd_void(&taf->list,
 			taf->data_pt.point[taf->data_pt.nbr_lines], 0)
 		|| ft_lstadd_void(&taf->list,
@@ -71,7 +71,8 @@ void	read_map(t_all_file *taf)
 		|| ft_lstadd_void(&taf->list, taf->data_pt.point, 0)
 		|| ft_lstadd_void(&taf->list, taf->data_pt.color, 0))
 		fdf_exit(&taf->list, -1, strerror(errno));
-	while (taf->map[taf->data_pt.nbr_lines])
+	while (taf->map[taf->data_pt.nbr_lines]
+		&& taf->map[taf->data_pt.nbr_lines][0])
 	{
 		read_line(taf, taf->map[taf->data_pt.nbr_lines]);
 		taf->data_pt.nbr_lines++;
@@ -90,15 +91,17 @@ static void	read_file(t_all_file *taf, int fd)
 	while (rd == 1)
 	{
 		rd = get_next_line(fd, &data);
+		if (ft_lstadd_void(&taf->list, data, 0))
+			fdf_exit(&taf->list, -1, strerror(errno));
 		taf->map = ft_word_join(taf->map, data);
 		if (!taf->map || rd == -1)
 		{
-			ft_lstadd_dbl(&taf->list, (void **)taf->map,
-				ft_word_len(taf->map), 0);
+			ft_lstadd_dbl(&taf->list, (void **)taf->map, ft_word_len(taf->map),
+				0);
 			fdf_exit(&taf->list, -1, strerror(errno));
 		}
 	}
-	ft_lstadd_dbl(&taf->list, (void **)taf->map, taf->data_pt.nbr_lines, 0);
+	ft_lstadd_dbl(&taf->list, (void **)taf->map, ft_word_len(taf->map), 0);
 }
 
 void	open_fdf(t_all_file *taf, char *file)
@@ -111,4 +114,5 @@ void	open_fdf(t_all_file *taf, char *file)
 		fdf_exit(&taf->list, fd, strerror(errno));
 	read_file(taf, fd);
 	close(fd);
+	read_map(taf);
 }

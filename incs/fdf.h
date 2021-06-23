@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/16 17:32:11 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 17:17:50 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 
 # define WIDTH	1024
 # define HEIGHT	768
+# define B16U	"0123456789ABCDEF"
+# define B16L	"0123456789abcdef"
 
 typedef struct s_data
 {
@@ -43,12 +45,6 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }	t_data;
-
-typedef struct s_resolution
-{
-	int	width;
-	int	height;
-}	t_resolution;
 
 typedef struct s_data_point
 {
@@ -64,7 +60,6 @@ typedef struct s_all_file
 	char			**map;
 	t_data			data;
 	t_data_point	data_pt;
-	t_resolution	res;
 }	t_all_file;
 
 void	write_error(int err, char *str);
@@ -72,7 +67,13 @@ void	fdf_exit(t_list **list, int err, char *str);
 void	fdf_arg(t_list **list, int ac, char **av);
 
 void	init_struct(t_all_file *taf);
+void	init_win(t_all_file *taf);
+void	init_img(t_all_file *taf);
 
 void	open_fdf(t_all_file *taf, char *file);
+
+void	read_color(t_all_file *taf, char *color);
+
+int		next_frame(t_all_file *taf);
 
 #endif

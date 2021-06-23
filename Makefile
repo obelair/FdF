@@ -6,7 +6,7 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/06/10 10:32:17 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/06/23 11:01:05 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ endif
 
 CC			=	gcc
 RENAME		=	-o ${NAME}
-CFLAGS		=	-Wall -Werror -Wextra -g3
+CFLAGS		=	-Wall -Werror -Wextra -g3 
 INCS		=	-I${PATH_HEADERS} -I${PATH_LIBFT}/${PATH_HEADERS} -I${PATH_MLX}
 LIBS		=	${MLX} ${PATH_LIBFT}/libft.a
 ifeq ($(LINUX),1)

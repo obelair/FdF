@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:19:30 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/17 13:26:59 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 10:26:21 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strishexa(char *str, int suffixe)
 	i = 0;
 	if (suffixe)
 	{
-		if (!str || str[0] != '0' || ft_strchr("Xx", str[1]))
+		if (!str || str[0] != '0' || !ft_strchr("Xx", str[1]))
 			return (-1);
 		i = 2;
 	}
