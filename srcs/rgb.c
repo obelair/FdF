@@ -6,13 +6,13 @@
 /*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 13:49:00 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/23 09:55:06 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/07/13 14:22:36 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	asc_to_rgb(t_all_file *taf, char *color)
+int	asc_to_rgb(char *color)
 {
 	int	rgb;
 	int	len;
@@ -22,11 +22,6 @@ int	asc_to_rgb(t_all_file *taf, char *color)
 	i = ft_strlen(color) - 1;
 	if (i > 5 || i < 0 || !(i % 2))
 		return (-1);
-	if (i != 5)
-	{
-		if (ft_lstadd_void(&taf->list, color, 0))
-			fdf_exit(&taf->list, -1, strerror(errno));
-	}
 	len = i;
 	while (i >= 0)
 	{
@@ -50,8 +45,8 @@ void	read_color(t_all_file *taf, char *color)
 		taf->data_pt.color[line][col] = 0xFFFFFF;
 	else
 	{
-		taf->data_pt.color[line][col] = asc_to_rgb(taf, color + 2);
-		printf("Color : %d\n", taf->data_pt.color[line][col]);
+		taf->data_pt.color[line][col] = asc_to_rgb(color + 2);
+		// printf("Str : %s | Color : %d\n", color + 2, taf->data_pt.color[line][col]);
 		if (taf->data_pt.color[line][col] < 0)
 			fdf_exit(&taf->list, 5, color);
 	}
