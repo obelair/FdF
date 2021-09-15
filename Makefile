@@ -6,14 +6,14 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/06/23 11:01:05 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/09/15 20:25:12 by obelair          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === Name === #
 
 NAME		=	fdf
-LINUX		=	0
+LINUX		=	1
 
 # === Directories === #
 
