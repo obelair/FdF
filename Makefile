@@ -6,14 +6,14 @@
 #    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/09/15 20:25:12 by obelair          ###   ########.fr        #
+#    Updated: 2021/09/16 16:04:44 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # === Name === #
 
 NAME		=	fdf
-LINUX		=	1
+LINUX		=	0
 
 # === Directories === #
 
@@ -38,7 +38,7 @@ endif
 
 CC			=	gcc
 RENAME		=	-o ${NAME}
-CFLAGS		=	-Wall -Werror -Wextra -g3 
+CFLAGS		=	-Wall -Werror -Wextra -g3 -fsanitize=address
 INCS		=	-I${PATH_HEADERS} -I${PATH_LIBFT}/${PATH_HEADERS} -I${PATH_MLX}
 LIBS		=	${MLX} ${PATH_LIBFT}/libft.a
 ifeq ($(LINUX),1)
