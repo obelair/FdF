@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 13:09:55 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:19:25 by obelair          ###   ########lyon.fr   */
+/*   Created: 2020/11/23 16:58:36 by obelair           #+#    #+#             */
+/*   Updated: 2021/05/14 09:55:40 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	init_struct(t_all_file *taf)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	taf->map = NULL;
-	taf->data_pt.point = NULL;
-	taf->data_pt.pixel = NULL;
-	taf->data_pt.nbr_lines = 0;
-	taf->data_pt.nbr_columns = NULL;
-	taf->data_pt.nbr_col_max = 0;
+	size_t	i;
+	char	*s1;
+	char	*s2;
+
+	i = 0;
+	if (!dst && !src)
+		return (0);
+	s1 = (char *)dst;
+	s2 = (char *)src;
+	while (i < n)
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	return (dst);
 }

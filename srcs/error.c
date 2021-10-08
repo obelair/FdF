@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 12:50:50 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/23 12:49:15 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/07 12:48:48 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	fdf_arg(t_list **list, int ac, char **av)
 	char	**tmp;
 
 	tmp = NULL;
-	*list = ft_lstnew(NULL);
+	*list = NULL;
 	if (ac < 2)
 		fdf_exit(list, 1, av[0]);
 	else if (ac > 2)
@@ -48,7 +48,8 @@ void	fdf_arg(t_list **list, int ac, char **av)
 	if (ft_strchr(av[ac - 1], '.'))
 	{
 		tmp = ft_split(av[ac - 1], '.');
-		ft_lstadd_dbl(list, (void **)tmp, ft_word_len(tmp), 0);
+		if (ft_lstadd_dbl(list, (void **)tmp, ft_word_len(tmp), 0))
+			fdf_exit(list, -1, strerror(errno));
 		if (ft_strcmp(tmp[ft_word_len(tmp) - 1], "fdf"))
 			fdf_exit(list, 3, tmp[ft_word_len(tmp) - 1]);
 		else if (!tmp[1] || ft_strnstr(av[1], "/.fdf", ft_strlen(av[1])))

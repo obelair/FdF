@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/22 17:17:50 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/08 19:55:58 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@
 # endif
 
 # define WIDTH	1024
-# define HEIGHT	768
+# define HEIGHT	700
+# define SCALE	30
+# define OFF_L	50
+# define OFF_U	30
 # define B16U	"0123456789ABCDEF"
 # define B16L	"0123456789abcdef"
 
@@ -46,12 +49,23 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
+typedef struct s_pixel
+{
+	int	x;
+	int	y;
+}	t_pixel;
+
 typedef struct s_data_point
 {
 	t_vector	**point;
 	int			**color;
+	t_pixel		**pixel;
+	float		scale;
+	float		off_left;
+	float		off_up;
 	size_t		nbr_lines;
 	size_t		*nbr_columns;
+	size_t		nbr_col_max;
 }	t_data_point;
 
 typedef struct s_all_file
@@ -73,6 +87,10 @@ void	init_img(t_all_file *taf);
 void	open_fdf(t_all_file *taf, char *file);
 
 void	read_color(t_all_file *taf, char *color);
+
+void	calc_scale(t_all_file *taf);
+void	calc_offset(t_all_file *taf);
+void	calc_pixel(t_all_file *taf);
 
 int		next_frame(t_all_file *taf);
 

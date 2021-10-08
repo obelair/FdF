@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_nbishere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 13:09:55 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:19:25 by obelair          ###   ########lyon.fr   */
+/*   Created: 2021/07/31 23:15:18 by obelair           #+#    #+#             */
+/*   Updated: 2021/09/15 20:32:42 by obelair          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	init_struct(t_all_file *taf)
+int	ft_nbishere(int *tab, int nb, int size)
 {
-	taf->map = NULL;
-	taf->data_pt.point = NULL;
-	taf->data_pt.pixel = NULL;
-	taf->data_pt.nbr_lines = 0;
-	taf->data_pt.nbr_columns = NULL;
-	taf->data_pt.nbr_col_max = 0;
+	int	i;
+
+	i = 0;
+	while (i < size && tab[i] != nb)
+		i++;
+	if (i < size && tab[i] == nb)
+		return (1);
+	return (0);
 }

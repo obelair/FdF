@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 13:09:55 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:19:25 by obelair          ###   ########lyon.fr   */
+/*   Created: 2020/11/24 00:06:20 by obelair           #+#    #+#             */
+/*   Updated: 2021/09/22 13:53:39 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	init_struct(t_all_file *taf)
+void	*ft_calloc(size_t count, size_t size)
 {
-	taf->map = NULL;
-	taf->data_pt.point = NULL;
-	taf->data_pt.pixel = NULL;
-	taf->data_pt.nbr_lines = 0;
-	taf->data_pt.nbr_columns = NULL;
-	taf->data_pt.nbr_col_max = 0;
+	void	*mem;
+
+	mem = malloc(size * count);
+	if (!mem)
+		return (NULL);
+	ft_bzero(mem, count * size);
+	return (mem);
 }

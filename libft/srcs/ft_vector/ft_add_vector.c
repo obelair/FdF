@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_add_vector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 13:09:55 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:19:25 by obelair          ###   ########lyon.fr   */
+/*   Created: 2021/06/06 17:15:27 by obelair           #+#    #+#             */
+/*   Updated: 2021/09/22 13:51:12 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_vector.h"
 
-void	init_struct(t_all_file *taf)
+t_vector	ft_add_vector(t_vector u, t_vector v, int prout)
 {
-	taf->map = NULL;
-	taf->data_pt.point = NULL;
-	taf->data_pt.pixel = NULL;
-	taf->data_pt.nbr_lines = 0;
-	taf->data_pt.nbr_columns = NULL;
-	taf->data_pt.nbr_col_max = 0;
+	t_vector	result;
+
+	(void)prout;
+	result.x = u.x + v.x;
+	result.y = u.y + v.y;
+	result.z = u.z + v.z;
+	return (result);
 }

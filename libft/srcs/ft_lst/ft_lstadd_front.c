@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 13:09:55 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:19:25 by obelair          ###   ########lyon.fr   */
+/*   Created: 2020/11/26 15:59:26 by obelair           #+#    #+#             */
+/*   Updated: 2021/09/23 08:15:23 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	init_struct(t_all_file *taf)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	taf->map = NULL;
-	taf->data_pt.point = NULL;
-	taf->data_pt.pixel = NULL;
-	taf->data_pt.nbr_lines = 0;
-	taf->data_pt.nbr_columns = NULL;
-	taf->data_pt.nbr_col_max = 0;
+	if (!new)
+		*alst = NULL;
+	if (!*alst)
+		*alst = new;
+	else
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

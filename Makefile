@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/09/16 16:04:44 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/10/06 15:49:14 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # === Name === #
 
 NAME		=	fdf
-LINUX		=	0
+LINUX		=	1
 
 # === Directories === #
 
@@ -48,7 +48,7 @@ RM			=	rm -rf
 
 # === Sources === #
 
-SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c read.c rgb.c data.c}
+SRCS		=	${addprefix ${PATH_SRCS}/, main.c draw.c error.c init.c read.c rgb.c data.c calc.c}
 
 # === Objects === #
 

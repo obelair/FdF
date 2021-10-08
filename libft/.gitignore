@@ -1,0 +1,11 @@
+*.o
+*.dylib
+*.a
+*.dSYM
+*.swiftdoc
+*.swiftmodule
+.vscode
+.DS_Store
+fdf
+minilibx-linux
+setup

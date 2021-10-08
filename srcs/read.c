@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:13:54 by obelair           #+#    #+#             */
-/*   Updated: 2021/06/23 12:49:04 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/07 17:23:25 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	read_map(t_all_file *taf)
 		&& taf->map[taf->data_pt.nbr_lines][0])
 	{
 		read_line(taf, taf->map[taf->data_pt.nbr_lines]);
+		if (taf->data_pt.nbr_col_max < taf->data_pt.nbr_columns[taf->data_pt.nbr_lines])
+			taf->data_pt.nbr_col_max = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
 		taf->data_pt.nbr_lines++;
 	}
 }
