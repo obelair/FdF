@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 13:49:00 by obelair           #+#    #+#             */
-/*   Updated: 2021/07/13 14:22:36 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/09 13:44:23 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ void	read_color(t_all_file *taf, char *color)
 	int	col;
 	int	line;
 
-	line = taf->data_pt.nbr_lines;
-	col = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
+	line = taf->tdp.nbr_lines;
+	col = taf->tdp.nbr_columns[taf->tdp.nbr_lines];
 	if (!color)
-		taf->data_pt.color[line][col] = 0xFFFFFF;
+		taf->tdp.color[line][col] = 0xFFFFFF;
 	else
 	{
-		taf->data_pt.color[line][col] = asc_to_rgb(color + 2);
-		// printf("Str : %s | Color : %d\n", color + 2, taf->data_pt.color[line][col]);
-		if (taf->data_pt.color[line][col] < 0)
+		taf->tdp.color[line][col] = asc_to_rgb(color + 2);
+		if (taf->tdp.color[line][col] < 0)
 			fdf_exit(&taf->list, 5, color);
 	}
 }

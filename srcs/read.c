@@ -6,13 +6,13 @@
 /*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:13:54 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/07 17:23:25 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/09 14:14:34 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	read_point(t_all_file *taf, char *str)
+void	read_pt(t_all_file *taf, char *str)
 {
 	char	**tmp;
 	int		x;
@@ -24,11 +24,11 @@ void	read_point(t_all_file *taf, char *str)
 	if (ft_strisdigit(tmp[0]) || (str[0] == '-' && str != ft_strrchr(str, '-'))
 		|| (tmp[1] && ft_strishexa(tmp[1], 1)))
 		fdf_exit(&taf->list, 5, str);
-	x = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
-	y = taf->data_pt.nbr_lines;
-	taf->data_pt.point[y][x].x = x;
-	taf->data_pt.point[y][x].y = y;
-	taf->data_pt.point[y][x].z = ft_atoi(str);
+	x = taf->tdp.nbr_columns[taf->tdp.nbr_lines];
+	y = taf->tdp.nbr_lines;
+	taf->tdp.pt[y][x].x = x;
+	taf->tdp.pt[y][x].y = y;
+	taf->tdp.pt[y][x].z = ft_atoi(str);
 	read_color(taf, tmp[1]);
 }
 
@@ -39,22 +39,22 @@ void	read_line(t_all_file *taf, char *str)
 
 	tmp = ft_split(str, ' ');
 	len = ft_word_len(tmp);
-	taf->data_pt.point[taf->data_pt.nbr_lines] = ft_calloc(len,
+	taf->tdp.pt[taf->tdp.nbr_lines] = ft_calloc(len,
 			sizeof(t_vector));
-	taf->data_pt.color[taf->data_pt.nbr_lines] = ft_calloc(len,
+	taf->tdp.color[taf->tdp.nbr_lines] = ft_calloc(len,
 			sizeof(int));
-	if (!tmp || !taf->data_pt.point[taf->data_pt.nbr_lines]
-		|| !taf->data_pt.color[taf->data_pt.nbr_lines]
+	if (!tmp || !taf->tdp.pt[taf->tdp.nbr_lines]
+		|| !taf->tdp.color[taf->tdp.nbr_lines]
 		|| ft_lstadd_dbl(&taf->list, (void **)tmp, ft_word_len(tmp), 0)
 		|| ft_lstadd_void(&taf->list,
-			taf->data_pt.point[taf->data_pt.nbr_lines], 0)
+			taf->tdp.pt[taf->tdp.nbr_lines], 0)
 		|| ft_lstadd_void(&taf->list,
-			taf->data_pt.color[taf->data_pt.nbr_lines], 0))
+			taf->tdp.color[taf->tdp.nbr_lines], 0))
 		fdf_exit(&taf->list, -1, strerror(errno));
-	while (taf->data_pt.nbr_columns[taf->data_pt.nbr_lines] < len)
+	while (taf->tdp.nbr_columns[taf->tdp.nbr_lines] < len)
 	{
-		read_point(taf, tmp[taf->data_pt.nbr_columns[taf->data_pt.nbr_lines]]);
-		taf->data_pt.nbr_columns[taf->data_pt.nbr_lines]++;
+		read_pt(taf, tmp[taf->tdp.nbr_columns[taf->tdp.nbr_lines]]);
+		taf->tdp.nbr_columns[taf->tdp.nbr_lines]++;
 	}
 }
 
@@ -63,21 +63,21 @@ void	read_map(t_all_file *taf)
 	size_t	len;
 
 	len = ft_word_len(taf->map);
-	taf->data_pt.point = ft_calloc(len, sizeof(t_vector *));
-	taf->data_pt.nbr_columns = ft_calloc(len, sizeof(size_t));
-	taf->data_pt.color = ft_calloc(len, sizeof(int *));
-	if (!taf->data_pt.nbr_columns || !taf->data_pt.point
-		|| ft_lstadd_void(&taf->list, taf->data_pt.nbr_columns, 0)
-		|| ft_lstadd_void(&taf->list, taf->data_pt.point, 0)
-		|| ft_lstadd_void(&taf->list, taf->data_pt.color, 0))
+	taf->tdp.pt = ft_calloc(len, sizeof(t_vector *));
+	taf->tdp.nbr_columns = ft_calloc(len, sizeof(size_t));
+	taf->tdp.color = ft_calloc(len, sizeof(int *));
+	if (!taf->tdp.nbr_columns || !taf->tdp.pt
+		|| ft_lstadd_void(&taf->list, taf->tdp.nbr_columns, 0)
+		|| ft_lstadd_void(&taf->list, taf->tdp.pt, 0)
+		|| ft_lstadd_void(&taf->list, taf->tdp.color, 0))
 		fdf_exit(&taf->list, -1, strerror(errno));
-	while (taf->map[taf->data_pt.nbr_lines]
-		&& taf->map[taf->data_pt.nbr_lines][0])
+	while (taf->map[taf->tdp.nbr_lines]
+		&& taf->map[taf->tdp.nbr_lines][0])
 	{
-		read_line(taf, taf->map[taf->data_pt.nbr_lines]);
-		if (taf->data_pt.nbr_col_max < taf->data_pt.nbr_columns[taf->data_pt.nbr_lines])
-			taf->data_pt.nbr_col_max = taf->data_pt.nbr_columns[taf->data_pt.nbr_lines];
-		taf->data_pt.nbr_lines++;
+		read_line(taf, taf->map[taf->tdp.nbr_lines]);
+		if (taf->tdp.nbr_col_max < taf->tdp.nbr_columns[taf->tdp.nbr_lines])
+			taf->tdp.nbr_col_max = taf->tdp.nbr_columns[taf->tdp.nbr_lines];
+		taf->tdp.nbr_lines++;
 	}
 }
 

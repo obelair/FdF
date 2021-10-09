@@ -6,7 +6,7 @@
 /*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/08 19:55:58 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/09 18:52:08 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,25 @@
 # include "mlx.h"
 
 # ifdef __APPLE__
+#  define LEFT	123
+#  define RIGHT	124
 #  define ESC	53
+#  define W		13
+#  define S		1
+#  define A		0
+#  define D		2
+#  define I		105
+#  define O		111
 # else
+#  define LEFT	65361
+#  define RIGHT	65363
 #  define ESC	65307
+#  define W		122
+#  define S		115
+#  define A		113
+#  define D		100
+#  define I		105
+#  define O		111
 # endif
 
 # define WIDTH	1024
@@ -57,7 +73,7 @@ typedef struct s_pixel
 
 typedef struct s_data_point
 {
-	t_vector	**point;
+	t_vector	**pt;
 	int			**color;
 	t_pixel		**pixel;
 	float		scale;
@@ -66,6 +82,8 @@ typedef struct s_data_point
 	size_t		nbr_lines;
 	size_t		*nbr_columns;
 	size_t		nbr_col_max;
+	t_pixel		min;
+	t_pixel		max;
 }	t_data_point;
 
 typedef struct s_all_file
@@ -73,7 +91,7 @@ typedef struct s_all_file
 	t_list			*list;
 	char			**map;
 	t_data			data;
-	t_data_point	data_pt;
+	t_data_point	tdp;
 }	t_all_file;
 
 void	write_error(int err, char *str);
@@ -89,8 +107,12 @@ void	open_fdf(t_all_file *taf, char *file);
 void	read_color(t_all_file *taf, char *color);
 
 void	calc_scale(t_all_file *taf);
+void	calc_min_max(t_all_file *taf);
 void	calc_offset(t_all_file *taf);
 void	calc_pixel(t_all_file *taf);
+
+void	move(t_all_file *taf, int key);
+void	zoom(t_all_file *taf, int key);
 
 int		next_frame(t_all_file *taf);
 
