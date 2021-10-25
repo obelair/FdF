@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+         #
+#    By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/12 12:38:13 by obelair           #+#    #+#              #
-#    Updated: 2021/10/09 17:35:59 by obelair          ###   ########lyon.fr    #
+#    Updated: 2021/10/25 14:55:09 by obelair          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 # === Name === #
 
 NAME		=	fdf
-LINUX		=	1
+LINUX		=	0
 
 # === Directories === #
 
@@ -38,7 +38,7 @@ endif
 
 CC			=	gcc
 RENAME		=	-o ${NAME}
-CFLAGS		=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS		=	-Wall -Werror -Wextra #-g3 -fsanitize=address#
 INCS		=	-I${PATH_HEADERS} -I${PATH_LIBFT}/${PATH_HEADERS} -I${PATH_MLX}
 LIBS		=	${MLX} ${PATH_LIBFT}/libft.a
 ifeq ($(LINUX),1)
@@ -79,7 +79,7 @@ all:	init ${NAME}
 
 # === Commands === #
 
-${PATH_OBJS}/%.o: ${PATH_SRCS}/%.c ${HEADERS}
+${PATH_OBJS}/%.o: ${PATH_SRCS}/%.c ${HEADERS} ${LIBS}
 	@ echo " ${_GREEN}${_DIM}\\\\\ ${_END}${_GREEN}Compilation done!${_DIM} //${_CYAN}   --->   ${_END}${_YELLOW}| ${_BOLD}${_CYAN}$<${_END} "
 	@ ${CC} ${CFLAGS} -c $< -o $@ ${INCS}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 13:44:39 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/09 18:52:08 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/25 14:53:32 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 #  define S		1
 #  define A		0
 #  define D		2
-#  define I		105
-#  define O		111
+#  define I		34
+#  define O		31
 # else
 #  define LEFT	65361
 #  define RIGHT	65363
@@ -48,9 +48,6 @@
 
 # define WIDTH	1024
 # define HEIGHT	700
-# define SCALE	30
-# define OFF_L	50
-# define OFF_U	30
 # define B16U	"0123456789ABCDEF"
 # define B16L	"0123456789abcdef"
 
