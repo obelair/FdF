@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: obelair <obelair@student.42Lyon.fr>        +#+  +:+       +#+        */
+/*   By: obelair <obelair@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 13:49:00 by obelair           #+#    #+#             */
-/*   Updated: 2021/10/09 13:44:23 by obelair          ###   ########lyon.fr   */
+/*   Updated: 2021/10/25 14:23:06 by obelair          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	asc_to_rgb(char *color)
 	if (i > 5 || i < 0 || !(i % 2))
 		return (-1);
 	len = i;
+	rgb = 0;
 	while (i >= 0)
 	{
 		nb = ft_max(ft_strichr(B16L, color[i]), ft_strichr(B16U, color[i]));
